@@ -21,6 +21,8 @@ spring:
       view:
         prefix: /WEB-INF/views/
         suffix: .jsp
+    profiles:
+      active: stage
 http:
   port: '8080'
 https:

@@ -1,4 +1,4 @@
-package com.acq.collection.acqcollectionbook.config.task;
+package com.acq.collection.acqcollectionbook.config.scheduler;
 
 import org.springframework.scheduling.Trigger;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
@@ -11,16 +11,15 @@ public abstract class DynamicAbstractScheduler {
         this.scheduler.shutdown();
     }
 
-    public void startScheduler(final String taskName) {
+    public void startScheduler() {
         this.scheduler = new ThreadPoolTaskScheduler();
-        this.scheduler.setBeanName(taskName);
         this.scheduler.initialize();
         this.scheduler.schedule(getRunnable(), getTrigger());
     }
 
-    public void restartScheduler(final String taskName) {
+    public void restartScheduler() {
         this.stopScheduler();
-        this.startScheduler(taskName);
+        this.startScheduler();
     }
 
     private Runnable getRunnable() {

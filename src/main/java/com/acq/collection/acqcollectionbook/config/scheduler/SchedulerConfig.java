@@ -1,4 +1,4 @@
-package com.acq.collection.acqcollectionbook.config.task;
+package com.acq.collection.acqcollectionbook.config.scheduler;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
