@@ -1,0 +1,29 @@
+server:
+  ssl:
+    key-store-password: nl1234
+    enabled: 'true'
+    key-store: .keystore
+  servlet:
+    context-path: /
+  port: '8443'
+spring:
+    datasource:
+      hikari:
+        username: root
+        driver-class-name: oracle.jdbc.driver.OracleDriver
+        connection-timeout: '10000'
+        jdbc-url: jdbc:oracle:thin:@localhost:1521/xe
+        maximum-pool-size: '10'
+        auto-commit: 'true'
+        connection-test-query: SELECT 1 FROM DUAL
+        password: root#
+    mvc:
+      view:
+        prefix: /WEB-INF/views/
+        suffix: .jsp
+http:
+  port: '8080'
+https:
+  port: '8443'
+mybatis:
+  mapper-locations: classpath:mappers/**/**.xml
