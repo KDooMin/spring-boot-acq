@@ -1,0 +1,1 @@
+[2023-02-12 00:06:03:1037815][SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
