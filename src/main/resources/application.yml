@@ -29,3 +29,6 @@ https:
   port: '8443'
 mybatis:
   mapper-locations: classpath:mappers/**/**.xml
+chrome:
+  driver-path: C:\\Users\\Doomin\\IdeaProjects\\acq-collection-book\\src\\main\\resources\\static\\chromium\\chromedriver.exe
+  driver-id: webdriver.chrome.driver

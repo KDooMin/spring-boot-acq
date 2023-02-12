@@ -5,6 +5,9 @@ import com.acq.collection.acqcollectionbook.homepage.collection.CollectionDivisi
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.openqa.selenium.WebDriver;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -16,13 +19,19 @@ public class BestSellerServiceImpl extends EgovAbstractServiceImpl implements Be
 
     private final ChaeumValidation chaeumValidation;
 
-    @Override
-    public Map<String, Object> getBestSellerInfo() {
-        String [] apiNames = {"KYOBO_API"};
+    private Document document;
 
-        for(String api : apiNames) {
-            CollectionDivision division = CollectionDivision.of(api);
-            log.info(division.getApiTitle() + ":" + division.getApiUrl());
+    @Override
+    public Map<String, Object> getBestSellerInfo(WebDriver driver) {
+        String [] apiNames = {"KYOBO_API"};
+        try {
+            for (String api : apiNames) {
+                CollectionDivision division = CollectionDivision.of(api);
+                document = Jsoup.connect(division.getApiUrl()).get();
+                log.info(document.toString());
+            }
+        } catch (Exception e) {
+            log.error("BEST SELLER ERROR INFO : >> " + e);
         }
         return chaeumValidation.successResult(null);
     }

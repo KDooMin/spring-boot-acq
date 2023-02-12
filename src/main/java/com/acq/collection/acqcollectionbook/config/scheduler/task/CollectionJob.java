@@ -1,9 +1,13 @@
 package com.acq.collection.acqcollectionbook.config.scheduler.task;
 
 import com.acq.collection.acqcollectionbook.config.scheduler.DynamicAbstractScheduler;
+import com.acq.collection.acqcollectionbook.homepage.collection.CollectionController;
 import com.acq.collection.acqcollectionbook.homepage.collection.CollectionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -15,14 +19,14 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 @Slf4j
 public class CollectionJob extends DynamicAbstractScheduler {
-    private final CollectionService collectionService;
+    private final CollectionController collectionController;
 
     @Value("${spring.profiles.active}")
     private String activeType;
 
     @Override
     public void runner() {
-        collectionService.collectionTask();
+        collectionController.getBestSellerInfo();
     }
 
     @Override
