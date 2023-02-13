@@ -42,7 +42,7 @@ public class SystemAspect {
         log.error(exceptionBuff.toString());
     }
 
-    @After("execution(* com.acq.collection.acqcollectionbook..*Controller.*(..))")
+    @After("execution(* com.acq.collection.acqcollectionbook..*Controller.*(..)) && !execution(* com.acq.collection.acqcollectionbook.homepage.collection.CollectionController.*(..))")
     public void systemAccessLog(JoinPoint joinPoint) {
 
         Signature signature = joinPoint.getSignature();

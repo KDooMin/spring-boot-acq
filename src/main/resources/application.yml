@@ -9,7 +9,7 @@ server:
 spring:
     datasource:
       hikari:
-        username: root
+        username: c##root
         driver-class-name: oracle.jdbc.driver.OracleDriver
         connection-timeout: '10000'
         jdbc-url: jdbc:oracle:thin:@localhost:1521/xe
@@ -30,5 +30,5 @@ https:
 mybatis:
   mapper-locations: classpath:mappers/**/**.xml
 chrome:
-  driver-path: C:\\Users\\Doomin\\IdeaProjects\\acq-collection-book\\src\\main\\resources\\static\\chromium\\chromedriver.exe
+  driver-path: C:\\Users\\user\\git_intellij\\spring-boot-acq\\src\\main\\resources\\static\\chromium\\chromedriver.exe
   driver-id: webdriver.chrome.driver

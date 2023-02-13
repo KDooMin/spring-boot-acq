@@ -7,6 +7,8 @@ import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import org.openqa.selenium.WebDriver;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RequiredArgsConstructor
@@ -17,12 +19,13 @@ public class CollectionServiceImpl extends EgovAbstractServiceImpl implements Co
     private final BestSellerService bestSellerService;
 
     @Override
-    public void collectionTask(WebDriver driver) {
-        bestSellerService.getBestSellerInfo(driver);
+    public void collectionTaskExecute(Map<String, Object> params, int _siteIndex, int _page, int _categoryIndex, int _listIndex, int _rank, int _tryIndex, WebDriver driver) {
+        // 베스트 셀러 수집기
+        bestSellerService.getBestSellerInfo(params, _siteIndex, _page, _categoryIndex, _listIndex, _rank, _tryIndex, driver);
     }
 
     @Override
-    public Map<String, Object> getBestSellerInfo(WebDriver driver) {
-        return null;
+    public Map<String, Object> getBestSellerInfo(Map<String, Object> params, int _siteIndex, int _page, int _categoryIndex, int _listIndex, int _rank, int _tryIndex, WebDriver driver) {
+        return bestSellerService.getBestSellerInfo(params, _siteIndex, _page, _categoryIndex, _listIndex, _rank, _tryIndex, driver);
     }
 }

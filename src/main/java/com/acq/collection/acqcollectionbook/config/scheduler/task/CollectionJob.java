@@ -2,12 +2,8 @@ package com.acq.collection.acqcollectionbook.config.scheduler.task;
 
 import com.acq.collection.acqcollectionbook.config.scheduler.DynamicAbstractScheduler;
 import com.acq.collection.acqcollectionbook.homepage.collection.CollectionController;
-import com.acq.collection.acqcollectionbook.homepage.collection.CollectionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -26,12 +22,12 @@ public class CollectionJob extends DynamicAbstractScheduler {
 
     @Override
     public void runner() {
-        collectionController.getBestSellerInfo();
+        collectionController.collectionTaskExecute();
     }
 
     @Override
     public Trigger getTrigger() {
-        String cron = "0/1 * * * * *";
+        String cron = "0 */1 * * * *";
         return new CronTrigger(cron);
     }
 
